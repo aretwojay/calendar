@@ -26,7 +26,8 @@ function display_events_by_month(array $events)
     sort_by_date($events);
     
     foreach ($events as $key => $event) {
-        if ($key === 0 || $key > 0 && $events[$key - 1]["date"] != $event['date'])
+        if ($key === 0 || $key > 0 
+        && date("Y-m", strtotime($events[$key - 1]["date"])) != date("Y-m", strtotime($event['date'])))
         {
             $date = date('Y-m', strtotime($event['date']));
             echo $date . PHP_EOL;
@@ -99,6 +100,7 @@ function display_calendar(array $events, string $dateBegin, string $dateEnd)
     //appel recursif
     if ($time_end >= $time->format('Y-m'))
     {
+        echo PHP_EOL;
         display_calendar($events, $time->format("Ym"), $dateEnd);
     }
     
