@@ -97,7 +97,7 @@ function display_calendar(array $events, string $dateBegin, string $dateEnd)
         }
         $time->add(new DateInterval('P1D'));
     }
-    //appel recursif
+    //appel recursif tant qu'on arrive pas à la date de fin
     if ($time_end >= $time->format('Y-m'))
     {
         echo PHP_EOL;
